@@ -216,15 +216,17 @@ const Quote = styled.p`
 `;
 
 const Svg = styled.svg`
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  margin-top: 5px;
   path {
     fill: #fff;
     fill-rule: nonzero;
-    opacity: 0.5;
-    &:hover {
-      fill: red;
-    }
+  }
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
   }
 `;
 
