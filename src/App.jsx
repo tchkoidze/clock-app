@@ -14,7 +14,6 @@ function App() {
     console.log(clock);
     const hour = clock.getHours();
     const minute = clock.getMinutes();
-
     x = `${hour}:${minute}`;
   }
 
@@ -54,16 +53,16 @@ function App() {
   useEffect(() => {
     requestTime();
     requestQuotes();
-    //requestLocation();
+    requestLocation();
   }, []);
 
   return (
     <>
-      <Main /*</>hour={hour}*/>
+      <Main>
         {!clicked ? (
           <QuoteBox>
             <Quote>{quote ? quote.slip.advice : null}</Quote>
-            {/*<img style={{ height: "18px" }} src="/icon-refresh.svg" alt="" />*/}
+
             <div style={{ width: "18px", height: "18px" }}>
               <Svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +80,7 @@ function App() {
         <InformationBox>
           <TimeLocationBox>
             <GreetingBox>
-              {5 > 6 <= 23 ? (
+              {5 > parseFloat(x) <= 23 ? (
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M11.78 19.417c.594 0 1.083.449 1.146 1.026l.006.125v1.842a1.152 1.152 
@@ -110,7 +109,7 @@ function App() {
                 </svg>
               )}
               <Greeting>
-                {/*5 < hour <= 23 ? "GOOD MORNING" : "GOOD EVENING"*/}
+                {5 < parseFloat(x) <= 23 ? "GOOD MORNING" : "GOOD EVENING"}
               </Greeting>
             </GreetingBox>
             <TimeBox>
@@ -119,33 +118,14 @@ function App() {
             </TimeBox>
 
             <Location>
-              {/*location
+              {location
                 ? `${location.region.name}, ${location.country.alpha2}`
-              : null*/}
-              London
+                : null}
             </Location>
           </TimeLocationBox>
           <ShowMoreBtn onClick={() => setClicked(!clicked)}>
             {clicked ? "less" : "more"}
-            <ArrowBox clicked={clicked}>
-              {/*clicked ? (
-                <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
-                  <g fill="none" fillRule="evenodd">
-                    <circle cx="20" cy="20" r="20" />
-                    <path stroke="#FFF" strokeWidth="2" d="M14 23l6-6 6 6" />
-                  </g>
-                </svg>
-              ) : (
-                <svg width="14" height="9" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    stroke="#FFF"
-                    strokeWidth="2"
-                    fill="none"
-                    d="m1 1 6 6 6-6"
-                  />
-                </svg>
-              )*/}
-            </ArrowBox>
+            <ArrowBox clicked={clicked}></ArrowBox>
           </ShowMoreBtn>
         </InformationBox>
         {clicked ? (
@@ -179,6 +159,7 @@ function App() {
 export default App;
 
 const Main = styled.main`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -214,9 +195,7 @@ const Main = styled.main`
 
 const QuoteBox = styled.div`
   display: flex;
-  //justify-content: space-between;
   gap: 16px;
-  //background-color: blue;
   padding: 0 26px;
   margin-top: 32px;
   @media (min-width: 768px) {
