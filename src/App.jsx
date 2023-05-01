@@ -53,7 +53,7 @@ function App() {
   useEffect(() => {
     requestTime();
     requestQuotes();
-    requestLocation();
+    //requestLocation();
   }, []);
 
   return (
@@ -118,9 +118,10 @@ function App() {
             </TimeBox>
 
             <Location>
-              {location
+              {/*location
                 ? `${location.region.name}, ${location.country.alpha2}`
-                : null}
+              : null*/}
+              lonon
             </Location>
           </TimeLocationBox>
           <ShowMoreBtn onClick={() => setClicked(!clicked)}>
