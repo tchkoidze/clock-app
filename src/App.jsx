@@ -171,8 +171,8 @@ const Main = styled.main`
       ? `linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.5)
-        ), url(./public/mobile/bg-image-daytime.jpg)`
-      : `url(./public/mobile/bg-image-nighttime.jpg)`};
+        ), url(/mobile/bg-image-daytime.jpg)`
+      : `url(/mobile/bg-image-nighttime.jpg)`};
   background-repeat: no-repeat;
   @media (min-width: 768px) {
     background-image: ${(props) =>
@@ -180,8 +180,8 @@ const Main = styled.main`
         ? `linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.5)
-        ), url(./public/tablet/bg-image-daytime.jpg)`
-        : `url(./public/tablet/bg-image-nighttime.jpg)`};
+        ), url(/tablet/bg-image-daytime.jpg)`
+        : `url(/tablet/bg-image-nighttime.jpg)`};
   }
   @media (min-width: 1440px) {
     background-image: ${(props) =>
@@ -189,8 +189,8 @@ const Main = styled.main`
         ? `linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.5)
-        ), url(./public/desktop/bg-image-daytime.jpg)`
-        : `url(./public/desktop/bg-image-nighttime.jpg)`};
+        ), url(/desktop/bg-image-daytime.jpg)`
+        : `url(/desktop/bg-image-nighttime.jpg)`};
   }
 `;
 
