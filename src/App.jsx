@@ -13,8 +13,13 @@ function App() {
     const clock = new Date(time.datetime);
     console.log(clock);
     const hour = clock.getHours();
-    const minute = clock.getMinutes();
+    let minute = clock.getMinutes();
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
     x = `${hour}:${minute}`;
+
+    console.log(x);
   }
 
   console.log(time);
@@ -58,7 +63,7 @@ function App() {
 
   return (
     <>
-      <Main>
+      <Main hour={parseFloat(x)}>
         {!clicked ? (
           <QuoteBox>
             <Quote>{quote ? quote.slip.advice : null}</Quote>
@@ -80,7 +85,7 @@ function App() {
         <InformationBox>
           <TimeLocationBox>
             <GreetingBox>
-              {5 > parseFloat(x) <= 23 ? (
+              {5 < parseFloat(x) && parseFloat(x) <= 18 ? (
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M11.78 19.417c.594 0 1.083.449 1.146 1.026l.006.125v1.842a1.152 1.152 
@@ -109,7 +114,9 @@ function App() {
                 </svg>
               )}
               <Greeting>
-                {5 < parseFloat(x) <= 23 ? "GOOD MORNING" : "GOOD EVENING"}
+                {5 < parseFloat(x) && parseFloat(x) <= 18
+                  ? "GOOD MORNING"
+                  : "GOOD EVENING"}
               </Greeting>
             </GreetingBox>
             <TimeBox>
@@ -167,7 +174,7 @@ const Main = styled.main`
   min-height: 100vh;
   background-size: cover;
   background-image: ${(props) =>
-    5 < props.hour <= 12
+    5 < props.hour && props.hour <= 18
       ? `linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.5)
@@ -176,7 +183,7 @@ const Main = styled.main`
   background-repeat: no-repeat;
   @media (min-width: 768px) {
     background-image: ${(props) =>
-      5 < props.hour <= 12
+      5 < props.hour && props.hour <= 18
         ? `linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.5)
@@ -185,7 +192,7 @@ const Main = styled.main`
   }
   @media (min-width: 1440px) {
     background-image: ${(props) =>
-      5 < props.hour <= 12
+      5 < props.hour && props.hour <= 18
         ? `linear-gradient(
           rgba(0, 0, 0, 0.5),
           rgba(0, 0, 0, 0.5)
@@ -314,15 +321,6 @@ const BST = styled.span`
     margin-bottom: 30px;
   }
 `;
-
-const LocationBox = styled.div`
-  display: flex;
-`;
-
-const City = styled.p`
-  margin-right: 8px;
-`;
-const Country = styled.p``;
 
 const Location = styled.p`
   font-size: 15px;
