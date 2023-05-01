@@ -31,7 +31,7 @@ function App() {
 
   const requestTime = async () => {
     try {
-      const response = await axios.get("http://worldtimeapi.org/api/ip");
+      const response = await axios.get("https://worldtimeapi.org/api/ip");
       const data = await response.data;
       console.log(data);
       setTime(data);
